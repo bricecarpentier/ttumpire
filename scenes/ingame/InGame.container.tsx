@@ -58,8 +58,9 @@ const computeCurrentPlayer = (
 ): Player => {
   const idx = playerToIndex(firstPlayer);
   const totalScore = score1 + score2;
-  const totalScoreMod4 = totalScore % 4;
-  const isFirst = [0, 1].includes(totalScoreMod4);
+  // 2 serve each until 10-10 then 1 serve each
+  const isFirst =
+    totalScore < 20 ? [0, 1].includes(totalScore % 4) : totalScore % 2 === 0;
   const indexOfNext = isFirst ? idx : idx + 1;
   return indexToPlayer(indexOfNext);
 };
