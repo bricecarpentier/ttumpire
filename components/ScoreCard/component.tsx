@@ -4,13 +4,15 @@ import { EventHandler } from '../../scenes/types/eventhandler';
 import BigDot from '../BigDot';
 import styles from './styles';
 
+const noop = () => null;
+
 type Variant = 'point' | 'game';
 
 type ScoreCardProps = {
   variant: Variant;
   side: 'left' | 'right';
-  onPress: EventHandler;
-  onLongPress: EventHandler;
+  onPress?: EventHandler;
+  onLongPress?: EventHandler;
   value: number;
   current: boolean;
 };
@@ -29,8 +31,9 @@ const ScoreCard = (props: ScoreCardProps) => (
       props.variant === 'game' ? styles.rootGame : styles.rootPoint,
     ]}
     activeOpacity={0.9}
-    onPress={props.onPress}
-    onLongPress={props.onLongPress}>
+    disabled={!(props.onPress || props.onLongPress)}
+    onPress={props.onPress ?? noop}
+    onLongPress={props.onLongPress ?? noop}>
     <>
       <Text
         style={[
