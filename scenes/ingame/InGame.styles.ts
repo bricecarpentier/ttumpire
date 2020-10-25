@@ -5,13 +5,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'stretch',
-  },
-  item: {
-    flex: 1,
-    alignItems: 'stretch',
-    justifyContent: 'center',
-    marginLeft: 16,
-    marginRight: 16,
+    justifyContent: 'space-between',
   },
 });
 

@@ -4,23 +4,45 @@ import { EventHandler } from '../../scenes/types/eventhandler';
 import BigDot from '../BigDot';
 import styles from './styles';
 
+type Variant = 'point' | 'game';
+
 type ScoreCardProps = {
-  variant: 'left' | 'right';
+  variant: Variant;
+  side: 'left' | 'right';
   onPress: EventHandler;
   onLongPress: EventHandler;
   value: number;
-  current?: boolean;
+  current: boolean;
+};
+
+const shouldHideDot = (variant: Variant, current: boolean) => {
+  if (variant === 'game') {
+    return true;
+  }
+  return !current;
 };
 
 const ScoreCard = (props: ScoreCardProps) => (
   <TouchableHighlight
-    style={styles.root}
+    style={[
+      styles.root,
+      props.variant === 'game' ? styles.rootGame : styles.rootPoint,
+    ]}
     activeOpacity={0.9}
     onPress={props.onPress}
     onLongPress={props.onLongPress}>
     <>
-      <Text style={styles.text}>{props.value}</Text>
-      <BigDot variant={props.variant} hidden={!props.current} />
+      <Text
+        style={[
+          styles.text,
+          props.variant === 'game' ? styles.textGame : styles.textPoint,
+        ]}>
+        {props.value}
+      </Text>
+      <BigDot
+        align={props.side}
+        hidden={shouldHideDot(props.variant, props.current)}
+      />
     </>
   </TouchableHighlight>
 );

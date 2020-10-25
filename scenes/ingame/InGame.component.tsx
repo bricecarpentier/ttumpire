@@ -18,24 +18,38 @@ const noop = () => null;
 
 const InGame = (props: InGameProps) => (
   <View style={styles.root}>
-    <View style={styles.item}>
-      <ScoreCard
-        variant="left"
-        onPress={props.player1Scored}
-        onLongPress={noop}
-        value={props.player1CurrentScore}
-        current={props.currentPlayer === 'player1'}
-      />
-    </View>
-    <View style={styles.item}>
-      <ScoreCard
-        variant="right"
-        onPress={props.player2Scored}
-        onLongPress={noop}
-        value={props.player2CurrentScore}
-        current={props.currentPlayer === 'player2'}
-      />
-    </View>
+    <ScoreCard
+      variant="game"
+      side="left"
+      onPress={noop}
+      onLongPress={noop}
+      value={0}
+      current={props.currentPlayer === 'player1'}
+    />
+    <ScoreCard
+      variant="point"
+      side="left"
+      onPress={props.player1Scored}
+      onLongPress={noop}
+      value={props.player1CurrentScore}
+      current={props.currentPlayer === 'player1'}
+    />
+    <ScoreCard
+      variant="point"
+      side="right"
+      onPress={props.player2Scored}
+      onLongPress={noop}
+      value={props.player2CurrentScore}
+      current={props.currentPlayer === 'player2'}
+    />
+    <ScoreCard
+      variant="game"
+      side="right"
+      onPress={noop}
+      onLongPress={noop}
+      value={0}
+      current={props.currentPlayer === 'player1'}
+    />
   </View>
 );
 
