@@ -2,13 +2,13 @@ import { GameRule, Rule } from './scenes/types/rule';
 
 const OldGameRule: GameRule = {
   firstAt: 21,
-  minimumGap: 2,
+  with2PointsGap: true,
   serveCount: 5,
 };
 
 const NewGameRule: GameRule = {
   firstAt: 11,
-  minimumGap: 2,
+  with2PointsGap: true,
   serveCount: 2,
 };
 

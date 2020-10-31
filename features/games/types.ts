@@ -4,7 +4,7 @@ export type GamePlayer = 'player1' | 'player2';
 
 export type Game = {
   id: string;
-  rule?: GameRule;
+  rule: GameRule;
   firstPlayer: GamePlayer;
   player1Score: number;
   player2Score: number;

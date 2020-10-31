@@ -1,4 +1,5 @@
 import { PayloadAction } from '@reduxjs/toolkit';
+import { NewRulesAmateur } from '../../rules';
 import { GameAlreadyExistsError, GameNotFoundError } from './errors';
 import {
   GameCreatedPayload,
@@ -30,6 +31,7 @@ export const gameCreated = (
   }
   state[gameId] = {
     id: gameId,
+    rule: NewRulesAmateur.game,
     firstPlayer,
     player1Score: 0,
     player2Score: 0,

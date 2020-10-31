@@ -1,6 +1,6 @@
 export type GameRule = {
   firstAt: number;
-  minimumGap: number;
+  with2PointsGap: true;
   serveCount: number;
 };
 
