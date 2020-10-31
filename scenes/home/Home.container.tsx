@@ -10,7 +10,7 @@ const HomeContainer = (props: any) => {
   const newGame = useCallback(() => {
     const gameId = uuidv4();
     dispatch(actions.gameCreated({ gameId, firstPlayer: 'player1' }));
-    navigation.push('ingame', { gameId });
+    navigation.push('choose-rule', { gameId });
   }, [dispatch, navigation]);
   return <HomeComponent newGame={newGame} />;
 };

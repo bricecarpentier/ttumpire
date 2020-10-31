@@ -1,15 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { gameCreated, pointScored } from './reducers';
+import * as reducers from './reducers';
 import * as types from './types';
 import * as selectors from './selectors';
 
 const GameSlice = createSlice({
   name: 'games',
   initialState: {} as types.GameState,
-  reducers: {
-    gameCreated,
-    pointScored,
-  },
+  reducers,
 });
 
 const { actions } = GameSlice;

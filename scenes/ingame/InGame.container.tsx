@@ -35,7 +35,7 @@ const InGameContainer = (props: InGameContainerProps) => {
 
   const finished = useRootSelector(sel.selectIsGameFinished);
   if (finished) {
-    setTimeout(() => props.navigation.pop(), 0);
+    setTimeout(() => props.navigation.popToTop(), 0);
   }
 
   return (

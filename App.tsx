@@ -11,6 +11,7 @@ import { Provider } from 'react-redux';
 import styles from './App.styles';
 import Home from './scenes/home';
 import InGame from './scenes/ingame';
+import ChooseRule from './scenes/choose-rule';
 import createStore from './store';
 
 const store = createStore();
@@ -28,6 +29,7 @@ const App = () => {
           <NavigationContainer ref={navigationRef}>
             <Stack.Navigator headerMode="none">
               <Stack.Screen name="home" component={Home} />
+              <Stack.Screen name="choose-rule" component={ChooseRule} />
               <Stack.Screen name="ingame" component={InGame} />
             </Stack.Navigator>
           </NavigationContainer>
