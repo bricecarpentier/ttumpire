@@ -6,13 +6,14 @@ import {
 } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useReduxDevToolsExtension } from '@react-navigation/devtools';
+import { Provider } from 'react-redux';
 
 import styles from './App.styles';
 import Home from './scenes/home';
 import InGame from './scenes/ingame';
+import createStore from './store';
 
-declare const global: { HermesInternal: null | {} };
-
+const store = createStore();
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -21,15 +22,17 @@ const App = () => {
 
   return (
     <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView style={styles.safeArea}>
-        <NavigationContainer ref={navigationRef}>
-          <Stack.Navigator headerMode="none">
-            <Stack.Screen name="home" component={Home} />
-            <Stack.Screen name="ingame" component={InGame} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </SafeAreaView>
+      <Provider store={store}>
+        <StatusBar barStyle="dark-content" />
+        <SafeAreaView style={styles.safeArea}>
+          <NavigationContainer ref={navigationRef}>
+            <Stack.Navigator headerMode="none">
+              <Stack.Screen name="home" component={Home} />
+              <Stack.Screen name="ingame" component={InGame} />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </SafeAreaView>
+      </Provider>
     </>
   );
 };

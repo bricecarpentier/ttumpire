@@ -15,6 +15,8 @@
     "@react-navigation/devtools": "^5.1.10",
     "@react-navigation/native": "^5.8.2",
     "@react-navigation/stack": "^5.11.1",
+    "@reduxjs/toolkit": "^1.4.0",
+    "@types/react-redux": "^7.1.9",
     "expo-screen-orientation": "^2.0.0",
     "react": "16.13.1",
     "react-native": "0.63.3",
@@ -22,7 +24,8 @@
     "react-native-reanimated": "^1.13.1",
     "react-native-safe-area-context": "^3.1.8",
     "react-native-screens": "^2.11.0",
-    "react-native-unimodules": "^0.11.0"
+    "react-native-unimodules": "^0.11.0",
+    "react-redux": "^7.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -40,6 +43,7 @@
     "prettier": "^2.1.2",
     "react-devtools": "^4.9.0",
     "react-test-renderer": "16.13.1",
+    "redux-devtools": "^3.7.0",
     "typescript": "^3.8.3"
   },
   "jest": {
