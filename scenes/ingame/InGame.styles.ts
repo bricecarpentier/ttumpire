@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '../../theme';
 
 const styles = StyleSheet.create({
   root: {
@@ -6,6 +7,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'stretch',
     justifyContent: 'space-between',
+    backgroundColor: colors.background(),
   },
 });
 

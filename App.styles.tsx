@@ -6,9 +6,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background(),
   },
-  scene: {
-    backgroundColor: colors.background(),
-  },
   label: {
     color: colors.primary(),
   },
