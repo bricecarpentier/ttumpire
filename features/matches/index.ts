@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-type Match = {};
+type Match = {
+  id: string;
+};
 
 type MatchState = {
   [id: string]: Match;
