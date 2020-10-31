@@ -6,7 +6,7 @@ import matches from './features/matches';
 const rootReducer = combineReducers({ games, matches });
 export type RootState = ReturnType<typeof rootReducer>;
 
-export const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
+export const useRootSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 export default () => {
   const store = configureStore({ reducer: rootReducer });

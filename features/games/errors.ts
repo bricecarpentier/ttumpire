@@ -9,3 +9,9 @@ export class GameNotFoundError extends MetaError<GameMeta> {
     super('game not found', { gameId });
   }
 }
+
+export class GameAlreadyExistsError extends MetaError<GameMeta> {
+  constructor(gameId: string) {
+    super('game already exists', { gameId });
+  }
+}

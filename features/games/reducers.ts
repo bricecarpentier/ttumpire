@@ -1,6 +1,6 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import { GameNotFoundError } from './errors';
-import { GameState, PointScoredPayload } from './types';
+import { GameAlreadyExistsError, GameNotFoundError } from './errors';
+import { GameCreatedPayload, GameState, PointScoredPayload } from './types';
 
 export const pointScored = (
   state: GameState,
@@ -13,4 +13,20 @@ export const pointScored = (
   }
   const scoreProp = player === 'player1' ? 'player1Score' : 'player2Score';
   game[scoreProp] = game[scoreProp] + 1;
+};
+
+export const gameCreated = (
+  state: GameState,
+  action: PayloadAction<GameCreatedPayload>,
+) => {
+  const { gameId, firstPlayer } = action.payload;
+  if (state[gameId]) {
+    throw new GameAlreadyExistsError(gameId);
+  }
+  state[gameId] = {
+    id: gameId,
+    firstPlayer,
+    player1Score: 0,
+    player2Score: 0,
+  };
 };

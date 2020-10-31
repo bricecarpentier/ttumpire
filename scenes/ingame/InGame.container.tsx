@@ -1,36 +1,39 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { actions, selectors } from '../../features/games';
-import { useTypedSelector } from '../../store';
+import { actions } from '../../features/games';
+import { useRootSelector } from '../../store';
 import InGameComponent from './InGame.component';
+import getSelectors from './Ingame.selectors';
 
 type InGameContainerProps = {
   navigation: any;
-  firstPlayer?: 'player1' | 'player2';
+  route: {
+    params: {
+      gameId: string;
+    };
+  };
 };
 
 const InGameContainer = (props: InGameContainerProps) => {
+  const { gameId } = props.route.params;
   const dispatch = useDispatch();
 
-  const gameId = 'game1';
   const player1Scored = useCallback(
     () => dispatch(actions.pointScored({ gameId, player: 'player1' })),
-    [dispatch],
+    [dispatch, gameId],
   );
   const player2Scored = useCallback(
     () => dispatch(actions.pointScored({ gameId, player: 'player2' })),
-    [dispatch],
+    [dispatch, gameId],
   );
 
-  const game = useTypedSelector((state) => selectors.selectGame(state, gameId));
-  const currentPlayer = useTypedSelector((state) =>
-    selectors.selectCurrentPlayer(state, gameId),
-  );
+  const sel = getSelectors(gameId);
+
+  const game = useRootSelector(sel.selectGame);
+  const currentPlayer = useRootSelector(sel.selectCurrentPlayer);
   const { player1Score, player2Score } = game;
 
-  const finished = useTypedSelector((state) =>
-    selectors.selectIsGameFinished(state, gameId),
-  );
+  const finished = useRootSelector(sel.selectIsGameFinished);
   if (finished) {
     setTimeout(() => props.navigation.pop(), 0);
   }

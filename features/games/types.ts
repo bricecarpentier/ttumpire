@@ -15,3 +15,8 @@ export type PointScoredPayload = {
   gameId: string;
   player: GamePlayer;
 };
+
+export type GameCreatedPayload = {
+  gameId: string;
+  firstPlayer: GamePlayer;
+};
