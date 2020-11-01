@@ -17,7 +17,7 @@ export const timerEffect = (props: TimerEffectProps) => {
     if (counter > 0) {
       setTimeout(() => setCounter(counter - 1), 1000);
     } else {
-      navigation.push('ingame', {
+      navigation.navigate('ingame', {
         matchId,
         gameId,
       });
