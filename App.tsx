@@ -9,6 +9,7 @@ import { useReduxDevToolsExtension } from '@react-navigation/devtools';
 import { Provider } from 'react-redux';
 
 import styles from './App.styles';
+import { RootStackParamList } from './App.types';
 import Home from './scenes/home';
 import InGame from './scenes/ingame';
 import ChooseRule from './scenes/choose-rule';
@@ -16,7 +17,7 @@ import Timer from './scenes/timer';
 import createStore from './store';
 
 const store = createStore();
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<RootStackParamList>();
 
 const App = () => {
   const navigationRef = React.useRef<NavigationContainerRef>(null);

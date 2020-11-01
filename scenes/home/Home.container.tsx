@@ -1,10 +1,16 @@
+import { StackNavigationProp } from '@react-navigation/stack';
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import { RootStackParamList } from '../../App.types';
 import { actions } from '../../features/matches';
 import HomeComponent from './Home.component';
 
-const HomeContainer = (props: any) => {
+type Props = {
+  navigation: StackNavigationProp<RootStackParamList, 'home'>;
+};
+
+const HomeContainer = (props: Props) => {
   const { navigation } = props;
   const dispatch = useDispatch();
   const newGame = useCallback(() => {

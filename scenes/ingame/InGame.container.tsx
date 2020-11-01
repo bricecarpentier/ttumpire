@@ -1,23 +1,21 @@
+import { RouteProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import { RootStackParamList } from '../../App.types';
 import { actions } from '../../features/games';
 import { actions as matchActions } from '../../features/matches';
 import { useRootSelector } from '../../store';
 import InGameComponent from './InGame.component';
 import getSelectors from './Ingame.selectors';
 
-type InGameContainerProps = {
-  navigation: any;
-  route: {
-    params: {
-      gameId: string;
-      matchId: string;
-    };
-  };
+type Props = {
+  navigation: StackNavigationProp<RootStackParamList, 'ingame'>;
+  route: RouteProp<RootStackParamList, 'ingame'>;
 };
 
-const InGameContainer = (props: InGameContainerProps) => {
+const InGameContainer = (props: Props) => {
   const { navigation } = props;
   const { gameId, matchId } = props.route.params;
   const dispatch = useDispatch();
@@ -63,7 +61,10 @@ const InGameContainer = (props: InGameContainerProps) => {
           gameId: newGameId,
         }),
       );
-      setTimeout(() => navigation.push('timer'), 0);
+      setTimeout(
+        () => navigation.push('timer', { matchId, gameId: newGameId }),
+        0,
+      );
     }
   }, [
     dispatch,
