@@ -12,58 +12,64 @@ const NewGameRule: GameRule = {
   serveCount: 2,
 };
 
-const OneSetShowdownRule: MatchRule = {
+const BestOf1: MatchRule = {
   strategy: 'firstAt',
   value: 1,
   secondsBetweenGames: 60,
 };
 
-const AmateurRule: MatchRule = {
+const BestOf3: MatchRule = {
   strategy: 'bestOf',
-  value: 5,
-  secondsBetweenGames: 60,
+  value: 3,
+  secondsBetweenGames: 2,
 };
 
-const ProRule: MatchRule = {
+const BestOf5: MatchRule = {
+  strategy: 'bestOf',
+  value: 5,
+  secondsBetweenGames: 2,
+};
+
+const BestOf7: MatchRule = {
   strategy: 'bestOf',
   value: 7,
-  secondsBetweenGames: 60,
+  secondsBetweenGames: 2,
 };
 
 export const OldRulesOneSetShowdown: Rule = {
   name: 'Old rules - One set showdown',
   game: OldGameRule,
-  match: OneSetShowdownRule,
+  match: BestOf1,
 };
 
 export const OldRulesAmateur: Rule = {
   name: 'Old rules - Amateur level',
   game: OldGameRule,
-  match: AmateurRule,
+  match: BestOf3,
 };
 
 export const OldRulesPro: Rule = {
   name: 'Old rules - Pro level',
   game: OldGameRule,
-  match: ProRule,
+  match: BestOf5,
 };
 
 export const NewRuleOneSetShowdown: Rule = {
   name: 'New rules - One set showdown',
   game: NewGameRule,
-  match: OneSetShowdownRule,
+  match: BestOf1,
 };
 
 export const NewRulesAmateur: Rule = {
   name: 'New rules - Amateur level',
   game: NewGameRule,
-  match: AmateurRule,
+  match: BestOf5,
 };
 
 export const NewRulesPro: Rule = {
   name: 'New rules - Pro level',
   game: NewGameRule,
-  match: ProRule,
+  match: BestOf7,
 };
 
 export const BriceAndElizabeth: Rule = {
