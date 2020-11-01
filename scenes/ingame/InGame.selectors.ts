@@ -3,7 +3,6 @@ import { selectors as gameSelectors } from '../../features/games';
 import { GamePlayer } from '../../features/games/types';
 import { selectors as matchSelectors } from '../../features/matches';
 import { Match } from '../../features/matches/types';
-import { RootState } from '../../store';
 
 const selectGame = createSelector(
   gameSelectors.selectGames,
@@ -39,15 +38,17 @@ const selectMatchWinner = createSelector(
   },
 );
 
-const getSelectors = (matchId: string, gameId: string) => ({
-  selectGame: (state: RootState) => selectGame(state, { gameId }),
-  selectCurrentPlayer: (state: RootState) =>
-    selectCurrentPlayer(state, { gameId }),
-  selectIsGameFinished: (state: RootState) =>
-    selectIsGameFinished(state, { gameId }),
-  selectMatch: (state: RootState) => selectMatch(state, { matchId }),
-  selectMatchWinner: (state: RootState) =>
-    selectMatchWinner(state, { matchId }),
-});
-
-export default getSelectors;
+export default createSelector(
+  selectMatch,
+  selectGame,
+  selectCurrentPlayer,
+  selectIsGameFinished,
+  selectMatchWinner,
+  (match, game, currentPlayer, gameFinished, matchWinner) => ({
+    match,
+    game,
+    currentPlayer,
+    gameFinished,
+    matchWinner,
+  }),
+);

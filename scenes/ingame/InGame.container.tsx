@@ -1,14 +1,13 @@
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { v4 as uuidv4 } from 'uuid';
 import { RootStackParamList } from '../../App.types';
 import { actions } from '../../features/games';
-import { actions as matchActions } from '../../features/matches';
 import { useRootSelector } from '../../store';
 import InGameComponent from './InGame.component';
-import getSelectors from './Ingame.selectors';
+import { gameEndEffect } from './InGame.effects';
+import selectAll from './InGame.selectors';
 
 type Props = {
   navigation: StackNavigationProp<RootStackParamList, 'ingame'>;
@@ -29,51 +28,23 @@ const InGameContainer = (props: Props) => {
     [dispatch, gameId],
   );
 
-  const selectors = getSelectors(matchId, gameId);
-
-  const match = useRootSelector(selectors.selectMatch);
-  const game = useRootSelector(selectors.selectGame);
-  const currentPlayer = useRootSelector(selectors.selectCurrentPlayer);
-  const { player1Score, player2Score } = game;
-
-  const gameFinished = useRootSelector(selectors.selectIsGameFinished);
-  const matchWinner = useRootSelector(selectors.selectMatchWinner);
-
-  useEffect(() => {
-    if (!gameFinished) {
-      return;
-    }
-
-    if (matchWinner) {
-      setTimeout(() => navigation.popToTop(), 0);
-    } else {
-      const newGameId = uuidv4();
-      dispatch(
-        actions.gameCreated({
-          gameId: newGameId,
-          rule: match.rule.game,
-          firstPlayer: 'player1',
-        }),
-      );
-      dispatch(
-        matchActions.gameAdded({
-          matchId,
-          gameId: newGameId,
-        }),
-      );
-      setTimeout(
-        () => navigation.push('timer', { matchId, gameId: newGameId }),
-        0,
-      );
-    }
-  }, [
-    dispatch,
-    matchId,
+  const {
+    match,
+    game,
+    currentPlayer,
     gameFinished,
     matchWinner,
-    match.rule.game,
+  } = useRootSelector((state) => selectAll(state, { matchId, gameId }));
+  const { player1Score, player2Score } = game;
+
+  gameEndEffect({
+    dispatch,
     navigation,
-  ]);
+    matchId,
+    gameRule: match.rule.game,
+    gameFinished,
+    matchWinner,
+  });
 
   return (
     <InGameComponent
