@@ -14,6 +14,8 @@ type Props = {
   route: RouteProp<RootStackParamList, 'ingame'>;
 };
 
+const noop = () => null;
+
 const InGameContainer = (props: Props) => {
   const { navigation } = props;
   const { gameId, matchId } = props.route.params;
@@ -50,10 +52,10 @@ const InGameContainer = (props: Props) => {
 
   return (
     <InGameComponent
-      player1Scored={player1Scored}
+      player1Scored={gameFinished ? noop : player1Scored}
       player1CurrentScore={player1Score}
       player1Games={gameCount.player1}
-      player2Scored={player2Scored}
+      player2Scored={gameFinished ? noop : player2Scored}
       player2CurrentScore={player2Score}
       player2Games={gameCount.player2}
       currentPlayer={currentPlayer}
