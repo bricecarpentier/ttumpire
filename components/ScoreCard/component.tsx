@@ -6,7 +6,7 @@ import styles from './styles';
 
 const noop = () => null;
 
-type Variant = 'point' | 'game';
+type Variant = 'point' | 'game' | 'timer';
 
 type ScoreCardProps = {
   variant: Variant;
@@ -24,22 +24,27 @@ const shouldHideDot = (variant: Variant, current: boolean) => {
   return !current;
 };
 
+const rootStyles = {
+  game: styles.rootGame,
+  point: styles.rootPoint,
+  timer: styles.rootTimer,
+};
+
+const textStyles = {
+  game: styles.textGame,
+  point: styles.textPoint,
+  timer: styles.textTimer,
+};
+
 const ScoreCard = (props: ScoreCardProps) => (
   <TouchableHighlight
-    style={[
-      styles.root,
-      props.variant === 'game' ? styles.rootGame : styles.rootPoint,
-    ]}
+    style={[styles.root, rootStyles[props.variant]]}
     activeOpacity={0.9}
     disabled={!(props.onPress || props.onLongPress)}
     onPress={props.onPress ?? noop}
     onLongPress={props.onLongPress ?? noop}>
     <>
-      <Text
-        style={[
-          styles.text,
-          props.variant === 'game' ? styles.textGame : styles.textPoint,
-        ]}>
+      <Text style={[styles.text, textStyles[props.variant]]}>
         {props.value}
       </Text>
       <BigDot

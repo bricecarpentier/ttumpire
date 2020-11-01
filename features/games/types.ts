@@ -21,10 +21,6 @@ export type PointScoredPayload = {
 
 export type GameCreatedPayload = {
   gameId: string;
-  firstPlayer: GamePlayer;
-};
-
-export type RuleChangedPayload = {
-  gameId: string;
   rule: GameRule;
+  firstPlayer: GamePlayer;
 };

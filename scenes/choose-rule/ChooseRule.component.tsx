@@ -7,7 +7,6 @@ import { Rule } from '../types/rule';
 import { EventHandler } from '../types/eventhandler';
 
 interface ChooseRuleProps {
-  // newGame: EventHandler;
   chooseRule: (rule: Rule) => EventHandler;
   rules: Rule[];
 }

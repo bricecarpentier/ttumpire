@@ -40,3 +40,15 @@ export const computeCurrentPlayer = (
   const indexOfNext = isFirst ? idx : idx + 1;
   return indexToPlayer(indexOfNext);
 };
+
+export const computeGameWinner = (
+  rule: GameRule,
+  score1: number,
+  score2: number,
+): GamePlayer | null => {
+  const finished = isGameFinished(rule, score1, score2);
+  if (!finished) {
+    return null;
+  }
+  return score1 > score2 ? 'player1' : 'player2';
+};

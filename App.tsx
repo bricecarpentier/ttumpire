@@ -12,6 +12,7 @@ import styles from './App.styles';
 import Home from './scenes/home';
 import InGame from './scenes/ingame';
 import ChooseRule from './scenes/choose-rule';
+import Timer from './scenes/timer';
 import createStore from './store';
 
 const store = createStore();
@@ -31,6 +32,7 @@ const App = () => {
               <Stack.Screen name="home" component={Home} />
               <Stack.Screen name="choose-rule" component={ChooseRule} />
               <Stack.Screen name="ingame" component={InGame} />
+              <Stack.Screen name="timer" component={Timer} />
             </Stack.Navigator>
           </NavigationContainer>
         </SafeAreaView>

@@ -17,6 +17,11 @@ const styles = StyleSheet.create({
     height: '50%',
     backgroundColor: colors.secondary(),
   },
+  rootTimer: {
+    borderRadius: 48,
+    width: '50%',
+    backgroundColor: colors.darkerBackground(),
+  },
   text: {
     color: colors.empty(),
     textAlign: 'center',
@@ -26,6 +31,9 @@ const styles = StyleSheet.create({
   },
   textGame: {
     fontSize: 96,
+  },
+  textTimer: {
+    fontSize: 200,
   },
 });
 
