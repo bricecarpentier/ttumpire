@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, StatusBar } from 'react-native';
+import { StatusBar } from 'react-native';
 import {
   NavigationContainer,
   NavigationContainerRef,
@@ -8,13 +8,14 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { useReduxDevToolsExtension } from '@react-navigation/devtools';
 import { Provider } from 'react-redux';
 
-import styles from './App.styles';
+// import styles from './App.styles';
 import { RootStackParamList } from './App.types';
 import Home from './scenes/home';
 import InGame from './scenes/ingame';
 import ChooseRule from './scenes/choose-rule';
 import Timer from './scenes/timer';
 import createStore from './store';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const store = createStore();
 const Stack = createStackNavigator<RootStackParamList>();
@@ -27,7 +28,7 @@ const App = () => {
     <>
       <Provider store={store}>
         <StatusBar barStyle="dark-content" />
-        <SafeAreaView style={styles.safeArea}>
+        <SafeAreaProvider>
           <NavigationContainer ref={navigationRef}>
             <Stack.Navigator headerMode="none">
               <Stack.Screen name="home" component={Home} />
@@ -36,7 +37,7 @@ const App = () => {
               <Stack.Screen name="timer" component={Timer} />
             </Stack.Navigator>
           </NavigationContainer>
-        </SafeAreaView>
+        </SafeAreaProvider>
       </Provider>
     </>
   );

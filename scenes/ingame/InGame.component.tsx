@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import ScoreCard from '../../components/ScoreCard';
 import { EventHandler } from '../types/eventhandler';
 import styles from './InGame.styles';
@@ -18,7 +18,8 @@ type InGameProps = {
 };
 
 const InGame = (props: InGameProps) => (
-  <View style={[styles.root, props.switch ? styles.rootSwitch : undefined]}>
+  <SafeAreaView
+    style={[styles.root, props.switch ? styles.rootSwitch : undefined]}>
     <ScoreCard
       variant="game"
       side="left"
@@ -45,7 +46,7 @@ const InGame = (props: InGameProps) => (
       value={props.player2Games}
       current={props.currentPlayer === 'player1'}
     />
-  </View>
+  </SafeAreaView>
 );
 
 export default InGame;

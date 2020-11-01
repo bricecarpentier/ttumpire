@@ -27,13 +27,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   textPoint: {
-    fontSize: 200,
+    fontSize: 144,
   },
   textGame: {
     fontSize: 96,
   },
   textTimer: {
-    fontSize: 200,
+    fontSize: 144,
   },
 });
 
