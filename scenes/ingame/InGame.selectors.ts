@@ -1,8 +1,10 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { selectors as gameSelectors } from '../../features/games';
 import { GamePlayer } from '../../features/games/types';
-import { selectors as matchSelectors } from '../../features/matches';
-import { Match } from '../../features/matches/types';
+import {
+  selectors as matchSelectors,
+  utils as matchUtils,
+} from '../../features/matches';
 
 const selectGame = createSelector(
   gameSelectors.selectGames,
@@ -25,16 +27,24 @@ const selectMatch = createSelector(
   matchSelectors.selectMatch,
 );
 
-const selectMatchWinner = createSelector(
+const selectGameCount = createSelector(
   selectMatch,
   gameSelectors.selectGames,
-  (match: Match, allGames) => {
+  (match, allGames) => {
     const { games: gameIds } = match;
     const games = gameIds.map((id) => gameSelectors.selectGame(allGames, id));
     const gameWinners = games
       .map((g) => gameSelectors.selectGameWinner(g))
       .filter(Boolean);
-    return matchSelectors.selectMatchWinner(match, gameWinners as GamePlayer[]);
+    return matchUtils.computeGameCount(gameWinners as GamePlayer[]);
+  },
+);
+
+const selectMatchWinner = createSelector(
+  selectMatch,
+  selectGameCount,
+  (match, count) => {
+    return matchSelectors.selectMatchWinner(match, count);
   },
 );
 
@@ -43,12 +53,14 @@ export default createSelector(
   selectGame,
   selectCurrentPlayer,
   selectIsGameFinished,
+  selectGameCount,
   selectMatchWinner,
-  (match, game, currentPlayer, gameFinished, matchWinner) => ({
+  (match, game, currentPlayer, gameFinished, gameCount, matchWinner) => ({
     match,
     game,
     currentPlayer,
     gameFinished,
+    gameCount,
     matchWinner,
   }),
 );

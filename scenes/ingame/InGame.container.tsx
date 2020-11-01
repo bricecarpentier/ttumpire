@@ -33,6 +33,7 @@ const InGameContainer = (props: Props) => {
     game,
     currentPlayer,
     gameFinished,
+    gameCount,
     matchWinner,
   } = useRootSelector((state) => selectAll(state, { matchId, gameId }));
   const { player1Score, player2Score } = game;
@@ -50,8 +51,10 @@ const InGameContainer = (props: Props) => {
     <InGameComponent
       player1Scored={player1Scored}
       player1CurrentScore={player1Score}
+      player1Games={gameCount.player1}
       player2Scored={player2Scored}
       player2CurrentScore={player2Score}
+      player2Games={gameCount.player2}
       currentPlayer={currentPlayer}
     />
   );

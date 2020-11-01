@@ -8,8 +8,10 @@ type InGameProps = {
   player1Scored: EventHandler;
   player1Cancel?: EventHandler;
   player1CurrentScore: number;
+  player1Games: number;
   player2Scored: EventHandler;
   player2Cancel?: EventHandler;
+  player2Games: number;
   player2CurrentScore: number;
   currentPlayer: 'player1' | 'player2';
 };
@@ -19,7 +21,7 @@ const InGame = (props: InGameProps) => (
     <ScoreCard
       variant="game"
       side="left"
-      value={0}
+      value={props.player1Games}
       current={props.currentPlayer === 'player1'}
     />
     <ScoreCard
@@ -39,7 +41,7 @@ const InGame = (props: InGameProps) => (
     <ScoreCard
       variant="game"
       side="right"
-      value={0}
+      value={props.player2Games}
       current={props.currentPlayer === 'player1'}
     />
   </View>

@@ -1,5 +1,4 @@
-import { GamePlayer } from '../games/types';
-import { Match, MatchState } from './types';
+import { Match, MatchState, GameCount } from './types';
 import { computeMatchWinner } from './utils';
 
 type PartialRootState = { matches: MatchState };
@@ -10,5 +9,5 @@ export const selectMatch = (matches: MatchState, matchId: string) =>
 
 export const selectGames = (match: Match) => match.games;
 
-export const selectMatchWinner = (match: Match, gameWinners: GamePlayer[]) =>
-  computeMatchWinner(match.rule.match, gameWinners);
+export const selectMatchWinner = (match: Match, count: GameCount) =>
+  computeMatchWinner(match.rule.match, count);

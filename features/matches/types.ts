@@ -25,3 +25,8 @@ export type GameAddedPayload = {
   matchId: string;
   gameId: string;
 };
+
+export type GameCount = {
+  player1: number;
+  player2: number;
+};

@@ -1,10 +1,14 @@
 import { MatchRule } from '../../scenes/types/rule';
-import { MatchPlayer } from './types';
+import { MatchPlayer, GameCount } from './types';
 
-type GameCount = {
-  player1: number;
-  player2: number;
-};
+export const computeGameCount = (gameWinners: MatchPlayer[]): GameCount =>
+  gameWinners.reduce(
+    (acc: GameCount, next: MatchPlayer): GameCount => ({
+      ...acc,
+      [next]: acc[next] + 1,
+    }),
+    { player1: 0, player2: 0 },
+  );
 
 const computeBestOfWinner = (
   value: number,
@@ -34,15 +38,8 @@ const strategies = {
 
 export const computeMatchWinner = (
   rule: MatchRule,
-  gameWinners: MatchPlayer[],
+  count: GameCount,
 ): MatchPlayer | null => {
   const { value, strategy } = rule;
-  const count = gameWinners.reduce(
-    (acc: GameCount, next: MatchPlayer): GameCount => ({
-      ...acc,
-      [next]: acc[next] + 1,
-    }),
-    { player1: 0, player2: 0 },
-  );
   return strategies[strategy](value, count);
 };

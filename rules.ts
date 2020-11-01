@@ -72,6 +72,6 @@ export const BriceAndElizabeth: Rule = {
   match: {
     strategy: 'firstAt',
     value: 15,
-    secondsBetweenGames: 60,
+    secondsBetweenGames: 2,
   },
 };
