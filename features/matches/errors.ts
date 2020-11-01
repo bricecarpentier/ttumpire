@@ -15,3 +15,11 @@ export class MatchAlreadyExistsError extends MetaError<MatchMeta> {
     super('match already exists', { matchId });
   }
 }
+
+export class GameNotFoundInMatchError extends MetaError<
+  MatchMeta & { gameId: string }
+> {
+  constructor(matchId: string, gameId: string) {
+    super('game not found in match', { matchId, gameId });
+  }
+}

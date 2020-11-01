@@ -6,6 +6,7 @@ export type Match = {
   id: string;
   rule: Rule;
   games: string[];
+  startSwitch: boolean;
 };
 
 export type MatchState = {

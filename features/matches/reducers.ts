@@ -20,6 +20,7 @@ export const matchCreated = (
     id: matchId,
     rule: NewRulesAmateur,
     games: [],
+    startSwitch: false,
   };
 };
 

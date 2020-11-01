@@ -9,6 +9,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor: colors.background(),
   },
+  rootSwitch: {
+    flexDirection: 'row-reverse',
+  },
 });
 
 export default styles;

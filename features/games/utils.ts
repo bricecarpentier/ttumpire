@@ -52,3 +52,12 @@ export const computeGameWinner = (
   }
   return score1 > score2 ? 'player1' : 'player2';
 };
+
+export const isGameSecondHalf = (
+  rule: GameRule,
+  score1: number,
+  score2: number,
+) => {
+  const threshold = Math.floor(rule.firstAt / 2);
+  return score1 >= threshold || score2 >= threshold;
+};

@@ -33,6 +33,7 @@ const InGameContainer = (props: Props) => {
     game,
     currentPlayer,
     gameFinished,
+    shouldSwitch,
     gameCount,
     matchWinner,
   } = useRootSelector((state) => selectAll(state, { matchId, gameId }));
@@ -56,6 +57,7 @@ const InGameContainer = (props: Props) => {
       player2CurrentScore={player2Score}
       player2Games={gameCount.player2}
       currentPlayer={currentPlayer}
+      switch={shouldSwitch}
     />
   );
 };

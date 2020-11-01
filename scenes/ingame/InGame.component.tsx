@@ -5,6 +5,7 @@ import { EventHandler } from '../types/eventhandler';
 import styles from './InGame.styles';
 
 type InGameProps = {
+  switch: boolean;
   player1Scored: EventHandler;
   player1Cancel?: EventHandler;
   player1CurrentScore: number;
@@ -17,7 +18,7 @@ type InGameProps = {
 };
 
 const InGame = (props: InGameProps) => (
-  <View style={styles.root}>
+  <View style={[styles.root, props.switch ? styles.rootSwitch : undefined]}>
     <ScoreCard
       variant="game"
       side="left"
@@ -26,14 +27,14 @@ const InGame = (props: InGameProps) => (
     />
     <ScoreCard
       variant="point"
-      side="left"
+      side={props.switch ? 'right' : 'left'}
       onPress={props.player1Scored}
       value={props.player1CurrentScore}
       current={props.currentPlayer === 'player1'}
     />
     <ScoreCard
       variant="point"
-      side="right"
+      side={props.switch ? 'left' : 'right'}
       onPress={props.player2Scored}
       value={props.player2CurrentScore}
       current={props.currentPlayer === 'player2'}

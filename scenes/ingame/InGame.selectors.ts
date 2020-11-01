@@ -1,5 +1,8 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { selectors as gameSelectors } from '../../features/games';
+import {
+  selectors as gameSelectors,
+  utils as gameUtils,
+} from '../../features/games';
 import { GamePlayer } from '../../features/games/types';
 import {
   selectors as matchSelectors,
@@ -40,6 +43,22 @@ const selectGameCount = createSelector(
   },
 );
 
+const selectShouldSwitch = createSelector(
+  selectMatch,
+  selectGame,
+  (match, game) => {
+    const gameIsSwitch = matchUtils.gameIsSwitch(match, game.id);
+    const gameIsDecider = matchUtils.gameIsDecider(match, game.id);
+    const gameIsSecondHalf = gameUtils.isGameSecondHalf(
+      game.rule,
+      game.player1Score,
+      game.player2Score,
+    );
+    // eslint-disable-next-line no-bitwise
+    return !!(Number(gameIsSwitch) ^ Number(gameIsDecider && gameIsSecondHalf));
+  },
+);
+
 const selectMatchWinner = createSelector(
   selectMatch,
   selectGameCount,
@@ -53,13 +72,23 @@ export default createSelector(
   selectGame,
   selectCurrentPlayer,
   selectIsGameFinished,
+  selectShouldSwitch,
   selectGameCount,
   selectMatchWinner,
-  (match, game, currentPlayer, gameFinished, gameCount, matchWinner) => ({
+  (
     match,
     game,
     currentPlayer,
     gameFinished,
+    shouldSwitch,
+    gameCount,
+    matchWinner,
+  ) => ({
+    match,
+    game,
+    currentPlayer,
+    gameFinished,
+    shouldSwitch,
     gameCount,
     matchWinner,
   }),

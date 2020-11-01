@@ -1,5 +1,6 @@
 import { MatchRule } from '../../scenes/types/rule';
-import { MatchPlayer, GameCount } from './types';
+import { GameNotFoundInMatchError } from './errors';
+import { Match, MatchPlayer, GameCount } from './types';
 
 export const computeGameCount = (gameWinners: MatchPlayer[]): GameCount =>
   gameWinners.reduce(
@@ -31,7 +32,7 @@ const computeFirstAtWinner = (
   return null;
 };
 
-const strategies = {
+const winnerStrategies = {
   bestOf: computeBestOfWinner,
   firstAt: computeFirstAtWinner,
 };
@@ -41,5 +42,31 @@ export const computeMatchWinner = (
   count: GameCount,
 ): MatchPlayer | null => {
   const { value, strategy } = rule;
-  return strategies[strategy](value, count);
+  return winnerStrategies[strategy](value, count);
+};
+
+export const gameIsSwitch = (match: Match, gameId: string) => {
+  const { games, startSwitch } = match;
+  const gameIndex = games.indexOf(gameId);
+  if (gameIndex === -1) {
+    throw new GameNotFoundInMatchError(match.id, gameId);
+  }
+  const gamesUpTo = games.slice(0, gameIndex);
+  return gamesUpTo.reduce((acc) => !acc, startSwitch);
+};
+
+const deciderStrategies = {
+  bestOf: (value: number, match: Match, gameId: string) => {
+    const gameIndex = match.games.indexOf(gameId);
+    if (gameIndex === -1) {
+      throw new GameNotFoundInMatchError(match.id, gameId);
+    }
+    return gameIndex === value - 1;
+  },
+  firstAt: () => false,
+};
+
+export const gameIsDecider = (match: Match, gameId: string) => {
+  const { strategy, value } = match.rule.match;
+  return deciderStrategies[strategy](value, match, gameId);
 };
