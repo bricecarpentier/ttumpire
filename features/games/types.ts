@@ -6,8 +6,11 @@ export type Game = {
   id: string;
   rule: GameRule;
   firstPlayer: GamePlayer;
+  currentPlayer: GamePlayer;
   player1Score: number;
   player2Score: number;
+  winner?: GamePlayer;
+  secondHalf: boolean;
 };
 
 export type GameState = {

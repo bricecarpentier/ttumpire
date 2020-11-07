@@ -45,10 +45,10 @@ export const computeGameWinner = (
   rule: GameRule,
   score1: number,
   score2: number,
-): GamePlayer | null => {
+): GamePlayer | undefined => {
   const finished = isGameFinished(rule, score1, score2);
   if (!finished) {
-    return null;
+    return undefined;
   }
   return score1 > score2 ? 'player1' : 'player2';
 };
