@@ -1,14 +1,15 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { StackNavigationProp } from '@react-navigation/stack';
 import { useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { RootStackParamList } from '../../App.types';
-import { actions as gameActions } from '../../features/games';
+import { StackNavigationProp } from '@react-navigation/stack';
+
+import { actions as gameActions } from '@tt:features/games';
 import {
   actions as matchActions,
   types as matchTypes,
-} from '../../features/matches';
-import { GameRule } from '../types/rule';
+} from '@tt:features/matches';
+import { RootStackParamList } from '@tt:types/navigation';
+import { GameRule } from '@tt:types/rule';
 
 type GameEndEffectProps = {
   dispatch: React.Dispatch<any>;

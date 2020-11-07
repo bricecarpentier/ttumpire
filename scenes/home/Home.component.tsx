@@ -1,10 +1,11 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import NavigationScreenButton from '../../components/NavigationScreenButton';
+
+import NavigationScreenButton from '@tt:components/NavigationScreenButton';
+import { EventHandler } from '@tt:types/eventhandler';
 
 import styles from './Home.styles';
-import { EventHandler } from '../types/eventhandler';
 
 interface HomeProps {
   newGame: EventHandler;

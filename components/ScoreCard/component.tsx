@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, TouchableHighlight } from 'react-native';
-import { EventHandler } from '../../scenes/types/eventhandler';
+import { EventHandler } from '@tt:types/eventhandler';
 import BigDot from '../BigDot';
 import styles from './styles';
 

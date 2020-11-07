@@ -1,11 +1,12 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import NavigationScreenButton from '../../components/NavigationScreenButton';
+
+import NavigationScreenButton from '@tt:components/NavigationScreenButton';
+import { EventHandler } from '@tt:types/eventhandler';
+import { Rule } from '@tt:types/rule';
 
 import styles from './ChooseRule.styles';
-import { Rule } from '../types/rule';
-import { EventHandler } from '../types/eventhandler';
 
 interface ChooseRuleProps {
   chooseRule: (rule: Rule) => EventHandler;

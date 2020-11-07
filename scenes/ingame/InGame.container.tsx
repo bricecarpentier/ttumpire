@@ -2,9 +2,11 @@ import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { RootStackParamList } from '../../App.types';
-import { actions } from '../../features/games';
-import { useRootSelector } from '../../store';
+
+import { RootStackParamList } from '@tt:types/navigation';
+import { actions } from '@tt:features/games';
+import { useRootSelector } from '@tt:store';
+
 import InGameComponent from './InGame.component';
 import { gameEndEffect } from './InGame.effects';
 import selectAll from './InGame.selectors';

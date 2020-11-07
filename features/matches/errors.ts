@@ -1,4 +1,4 @@
-import { MetaError } from '../../utils/errors';
+import { MetaError } from '@tt:utils/errors';
 
 type MatchMeta = {
   matchId: string;

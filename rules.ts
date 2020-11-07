@@ -1,4 +1,4 @@
-import { GameRule, MatchRule, Rule } from './scenes/types/rule';
+import { GameRule, MatchRule, Rule } from './types/rule';
 
 const OldGameRule: GameRule = {
   firstAt: 21,

@@ -1,4 +1,4 @@
-import { Rule } from '../../scenes/types/rule';
+import { Rule } from '@tt:types/rule';
 
 export type MatchPlayer = 'player1' | 'player2';
 

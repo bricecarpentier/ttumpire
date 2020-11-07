@@ -1,4 +1,4 @@
-import { GameRule } from '../../scenes/types/rule';
+import { GameRule } from '@tt:types/rule';
 import { GamePlayer } from './types';
 
 export const isGameFinished = (

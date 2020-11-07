@@ -1,10 +1,11 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { selectors as gameSelectors } from '../../features/games';
-import { GamePlayer } from '../../features/games/types';
+
+import { selectors as gameSelectors } from '@tt:features/games';
+import { GamePlayer } from '@tt:features/games/types';
 import {
   selectors as matchSelectors,
   utils as matchUtils,
-} from '../../features/matches';
+} from '@tt:features/matches';
 
 const selectGame = createSelector(
   gameSelectors.selectGames,

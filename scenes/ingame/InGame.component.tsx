@@ -1,7 +1,9 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import ScoreCard from '../../components/ScoreCard';
-import { EventHandler } from '../types/eventhandler';
+
+import ScoreCard from '@tt:components/ScoreCard';
+import { EventHandler } from '@tt:types/eventhandler';
+
 import styles from './InGame.styles';
 
 type InGameProps = {

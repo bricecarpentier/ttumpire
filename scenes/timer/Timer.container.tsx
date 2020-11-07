@@ -2,9 +2,11 @@ import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { createSelector } from '@reduxjs/toolkit';
 import React, { useState } from 'react';
-import { RootStackParamList } from '../../App.types';
-import { selectors } from '../../features/matches';
-import { useRootSelector } from '../../store';
+
+import { RootStackParamList } from '@tt:types/navigation';
+import { selectors } from '@tt:features/matches';
+import { useRootSelector } from '@tt:store';
+
 import Timer from './Timer.component';
 import { timerEffect } from './Timer.effects';
 

@@ -2,8 +2,10 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { RootStackParamList } from '../../App.types';
-import { actions } from '../../features/matches';
+
+import { RootStackParamList } from '@tt:types/navigation';
+
+import { actions } from '@tt:features/matches';
 import HomeComponent from './Home.component';
 
 type Props = {

@@ -1,7 +1,9 @@
 import React from 'react';
-import styles from './Timer.styles';
-import ScoreCard from '../../components/ScoreCard';
 import { SafeAreaView } from 'react-native-safe-area-context';
+
+import ScoreCard from '@tt:components/ScoreCard';
+
+import styles from './Timer.styles';
 
 type TimerProps = {
   remainingTime: number;

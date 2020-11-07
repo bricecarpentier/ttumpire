@@ -1,5 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import { NewRulesAmateur } from '../../rules';
+
+import { NewRulesAmateur } from '@tt:rules';
+
 import { MatchAlreadyExistsError, MatchNotFoundError } from './errors';
 import {
   GameAddedPayload,

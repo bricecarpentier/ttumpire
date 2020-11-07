@@ -3,12 +3,14 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import React, { useCallback, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { RootStackParamList } from '../../App.types';
-import { actions as gameActions } from '../../features/games';
-import { actions as matchActions } from '../../features/matches';
-import * as rules from '../../rules';
-import { EventHandler } from '../types/eventhandler';
-import { Rule } from '../types/rule';
+
+import * as rules from '@tt:rules';
+import { EventHandler } from '@tt:types/eventhandler';
+import { RootStackParamList } from '@tt:types/navigation';
+import { Rule } from '@tt:types/rule';
+
+import { actions as gameActions } from '@tt:features/games';
+import { actions as matchActions } from '@tt:features/matches';
 import ChooseRule from './ChooseRule.component';
 
 type Props = {

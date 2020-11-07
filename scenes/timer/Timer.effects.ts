@@ -1,6 +1,6 @@
 import { StackNavigationProp } from '@react-navigation/stack';
 import React, { useEffect } from 'react';
-import { RootStackParamList } from '../../App.types';
+import { RootStackParamList } from '@tt:types/navigation';
 
 type TimerEffectProps = {
   counter: number;

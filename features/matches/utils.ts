@@ -1,4 +1,4 @@
-import { MatchRule } from '../../scenes/types/rule';
+import { MatchRule } from '@tt:types/rule';
 import { GameNotFoundInMatchError } from './errors';
 import { Match, MatchPlayer, GameCount } from './types';
 

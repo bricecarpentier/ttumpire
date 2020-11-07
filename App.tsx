@@ -6,16 +6,16 @@ import {
 } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useReduxDevToolsExtension } from '@react-navigation/devtools';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 
 // import styles from './App.styles';
-import { RootStackParamList } from './App.types';
+import { RootStackParamList } from './types/navigation';
 import Home from './scenes/home';
 import InGame from './scenes/ingame';
 import ChooseRule from './scenes/choose-rule';
 import Timer from './scenes/timer';
 import createStore from './store';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const store = createStore();
 const Stack = createStackNavigator<RootStackParamList>();
