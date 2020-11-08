@@ -4,7 +4,7 @@ module.exports = {
     [
       'module-resolver',
       {
-        root: ['./'],
+        root: ['./src'],
         extensions: [
           '.ios.ts',
           '.android.ts',
@@ -17,12 +17,12 @@ module.exports = {
           '.json',
         ],
         alias: {
-          '@tt:components': './components/*',
-          '@tt:features': './features/*',
-          '@tt:rules': './rules',
-          '@tt:types': './types/*',
-          '@tt:store': './store',
-          '@tt:utils': './utils/*',
+          '@tt:components': './src/components',
+          '@tt:features': './src/features',
+          '@tt:rules': './src/rules',
+          '@tt:types': './src/types',
+          '@tt:store': './src/store',
+          '@tt:utils': './src/utils',
         },
       },
     ],
